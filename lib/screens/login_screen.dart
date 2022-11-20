@@ -109,11 +109,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: TextFormField(
                       keyboardType: TextInputType.emailAddress,
                       onSaved: (input) => username = input,
-                      validator: (input) => !input!.contains('@')
-                          ? 'Email Id should be valid'
-                          : null,
+                      // validator: (input) => !input!.contains('@')
+                      //     ? 'Email Id should be valid'
+                      //     : null,
                       decoration: const InputDecoration(
-                        labelText: 'Email',
+                        labelText: 'Username',
                         labelStyle: TextStyle(
                           color: Colors.teal,
                           fontFamily: 'Montserrat',
@@ -216,98 +216,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 ],
               ),
             ),
-            // FormHelper.inputFieldWidget(
-            //   context,
-            //   "username",
-            //   "Username",
-            //   (onValidateVal) =>
-            //       onValidateVal.isEmpty ? "Username is required" : null,
-            //   (onSavedVal) => username = onSavedVal,
-            //   borderColor: Colors.teal,
-            //   borderFocusColor: Colors.white,
-            //   textColor: Colors.white,
-            //   paddingLeft: MediaQuery.of(context).size.width / 10,
-            //   paddingRight: MediaQuery.of(context).size.width / 10,
-            //   borderRadius: 20.0,
-            //   hintColor: Colors.teal.withOpacity(0.3),
-            //   hintFontSize: 14.0,
-            //   contentPadding: 16.0,
-            // ),
-            // Padding(
-            //   padding: const EdgeInsets.symmetric(vertical: 12),
-            //   child: FormHelper.inputFieldWidget(
-            //     context,
-            //     "password",
-            //     "Password",
-            //     (onValidateVal) =>
-            //         onValidateVal.isEmpty ? "Password is required" : null,
-            //     (onSavedVal) => password = onSavedVal,
-            //     borderColor: Colors.teal,
-            //     borderFocusColor: Colors.white,
-            //     textColor: Colors.white,
-            //     paddingLeft: MediaQuery.of(context).size.width / 10,
-            //     paddingRight: MediaQuery.of(context).size.width / 10,
-            //     borderRadius: 20.0,
-            //     hintColor: Colors.teal.withOpacity(0.3),
-            //     hintFontSize: 14.0,
-            //     contentPadding: 16.0,
-            //     obscureText: hidePassword,
-            //     suffixIcon: IconButton(
-            //       onPressed: () {
-            //         print("Hello");
-            //         setState(() {
-            //           hidePassword = !hidePassword;
-            //         });
-            //       },
-            //       icon: Icon(
-            //         hidePassword ? Icons.visibility_off : Icons.visibility,
-            //         color: Colors.teal.withOpacity(0.3),
-            //       ),
-            //     ),
-            //   ),
-            // ),
-            // Align(
-            //   alignment: Alignment.centerRight,
-            //   child: Padding(
-            //     padding: EdgeInsets.only(
-            //       right: MediaQuery.of(context).size.width / 10,
-            //       top: 5,
-            //     ),
-            //     child: RichText(
-            //       text: TextSpan(
-            //         style: const TextStyle(
-            //           color: Colors.grey,
-            //           fontSize: 16,
-            //           fontFamily: 'Montserrat',
-            //         ),
-            //         children: <TextSpan>[
-            //           TextSpan(
-            //             text: 'Forgot Password?',
-            //             style: TextStyle(
-            //               color: Colors.teal[500],
-            //               fontWeight: FontWeight.w400,
-            //               decoration: TextDecoration.underline,
-            //             ),
-            //             recognizer: TapGestureRecognizer()
-            //               ..onTap = () {
-            //                 print("Forgot password");
-            //               },
-            //           ),
-            //         ],
-            //       ),
-            //     ),
-            //   ),
-            // ),
-            // const SizedBox(height: 20),
-            // Center(
-            //   child: FormHelper.submitButton(
-            //     "Login",
-            //     () {},
-            //     btnColor: Colors.teal,
-            //     borderColor: Colors.teal,
-            //     borderRadius: 10,
-            //   ),
-            // ),
             const SizedBox(height: 25),
             const Center(
               child: Text(
