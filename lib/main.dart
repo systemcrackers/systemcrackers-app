@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import './screens/login_screen.dart';
+import './screens/signup_screen.dart';
+
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
@@ -8,24 +11,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // theme: ,
-      // routes: ,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            'My App',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 24,
-              fontFamily: 'Quicksand',
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-        ),
-        body: const Center(
-          child: Text('Hello World'),
-        ),
+      theme: ThemeData(
+        primarySwatch: Colors.teal,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      routes: {
+        // '/': (context) => const LandingScreen(),
+        '/': (context) => const LoginScreen(),
+        '/signup': (context) => const SignUpScreen(),
+      },
     );
   }
 }
