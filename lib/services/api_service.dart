@@ -2,8 +2,10 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:uia_app/models/login_request_model.dart';
+import 'package:uia_app/models/login_response_model.dart';
 import 'package:uia_app/models/register_request_model.dart';
 import 'package:uia_app/models/register_response_model.dart';
+import 'package:uia_app/services/shared_service.dart';
 import 'package:uia_app/utils/config.dart';
 
 class APIService {
@@ -26,6 +28,8 @@ class APIService {
       // login successful
       // SHARED service
 
+      await SharedService.setLoginDetails(loginResponseJson(response.body));
+
       return true;
     } else {
       return false;
@@ -46,6 +50,6 @@ class APIService {
       body: jsonEncode(model.toJson()),
     );
 
-    return registerResponseModel(response.body);
+    return registerResponseJson(response.body);
   }
 }

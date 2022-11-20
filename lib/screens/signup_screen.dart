@@ -266,45 +266,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
               ),
             ),
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.only(
-                  top: 20,
-                ),
-                child: RichText(
-                  text: TextSpan(
-                    style: const TextStyle(
-                      color: Colors.grey,
-                      fontSize: 16,
-                      fontFamily: 'Montserrat',
-                    ),
-                    children: <TextSpan>[
-                      TextSpan(
-                        text: 'Don\'t have an account? ',
-                        style: TextStyle(
-                          color: Colors.teal[500],
-                          fontWeight: FontWeight.w400,
-                          // decoration: TextDecoration.underline,
-                        ),
-                        recognizer: TapGestureRecognizer()..onTap = () {},
-                      ),
-                      TextSpan(
-                        text: 'Sign Up',
-                        style: TextStyle(
-                          color: Colors.teal[500],
-                          fontWeight: FontWeight.w400,
-                          decoration: TextDecoration.underline,
-                        ),
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () {
-                            Navigator.pushNamed(context, '/register');
-                          },
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            )
           ]),
     );
   }

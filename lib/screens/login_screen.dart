@@ -251,7 +251,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         const SizedBox(width: 5),
                         const Center(
                           child: Text(
-                            'Sign Up with Google',
+                            'Sign In with Google',
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
