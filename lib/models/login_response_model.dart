@@ -22,12 +22,13 @@ class LoginResponseModel {
 }
 
 class Data {
-  Data(
-      {required this.username,
-      required this.email,
-      required this.date,
-      required this.id,
-      required this.token});
+  Data({
+    required this.username,
+    required this.email,
+    required this.date,
+    required this.id,
+    required this.token,
+  });
   late final String username;
   late final String email;
   late final String date;

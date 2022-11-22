@@ -1,8 +1,17 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:snippet_coder_utils/FormHelper.dart';
 
 import 'package:snippet_coder_utils/ProgressHUD.dart';
+import 'package:uia_app/models/register_request_model.dart';
+import 'package:uia_app/screens/otp_screen.dart';
+
+import '../models/login_request_model.dart';
+import '../services/api_service.dart';
+import '../services/google_signin_api.dart';
+import '../utils/config.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -16,7 +25,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   bool hidePassword = true;
   GlobalKey<FormState> globalFormKey =
       GlobalKey<FormState>(); // to maintain state of form
-  String? username;
+  String? name;
   String? password;
   String? email;
 
@@ -107,80 +116,107 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       left: MediaQuery.of(context).size.width / 10,
                       right: MediaQuery.of(context).size.width / 10,
                     ),
-                    child: TextFormField(
-                      keyboardType: TextInputType.emailAddress,
-                      onSaved: (input) => username = input,
-                      decoration: const InputDecoration(
-                        labelText: 'Username',
-                        labelStyle: TextStyle(
-                          color: Colors.teal,
-                          fontFamily: 'Montserrat',
-                          fontWeight: FontWeight.bold,
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.teal),
-                        ),
-                      ),
+                    child: FormHelper.inputFieldWidget(
+                      context,
+                      "name",
+                      "Name",
+                      (onValidate) {
+                        if (onValidate.isEmpty) {
+                          return "Please enter name";
+                        }
+                        return null;
+                      },
+                      (onSaved) {
+                        name = onSaved;
+                      },
+                      initialValue: "",
+                      borderFocusColor: Colors.teal,
+                      borderColor: Colors.teal[600]!,
+                      hintColor: Colors.teal,
+                      borderRadius: 20,
+                      
+                      borderWidth: 2,
+                      paddingLeft: 10,
+                      paddingRight: 15,
+                      paddingBottom: 5,
+                      paddingTop: 5,
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 15),
                   Padding(
                     padding: EdgeInsets.only(
                       left: MediaQuery.of(context).size.width / 10,
                       right: MediaQuery.of(context).size.width / 10,
                     ),
-                    child: TextFormField(
-                      keyboardType: TextInputType.emailAddress,
-                      onSaved: (input) => username = input,
-                      validator: (input) => !input!.contains('@')
-                          ? 'Email Id should be valid'
-                          : null,
-                      decoration: const InputDecoration(
-                        labelText: 'Email',
-                        labelStyle: TextStyle(
-                          color: Colors.teal,
-                          fontFamily: 'Montserrat',
-                          fontWeight: FontWeight.bold,
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.teal),
-                        ),
-                      ),
+                    child: FormHelper.inputFieldWidget(
+                      context,
+                      "email",
+                      "Email",
+                      (onValidate) {
+                        if (onValidate.isEmpty && !onValidate.contains('@')) {
+                          return "Please enter valid email";
+                        }
+                        return null;
+                      },
+                      (onSaved) {
+                        email = onSaved;
+                      },
+                      initialValue: "",
+                      borderFocusColor: Colors.teal,
+                      borderColor: Colors.teal[600]!,
+                      hintColor: Colors.teal,
+                      borderRadius: 20,
+                      borderWidth: 2,
+                      paddingLeft: 10,
+                      paddingRight: 15,
+                      paddingBottom: 5,
+                      paddingTop: 5,
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 15),
                   Padding(
                     padding: EdgeInsets.only(
                       left: MediaQuery.of(context).size.width / 10,
                       right: MediaQuery.of(context).size.width / 10,
                     ),
-                    child: TextFormField(
+                    child: FormHelper.inputFieldWidget(
+                      context,
+                      "password",
+                      "Password",
+                      (onValidate) {
+                        if (onValidate.isEmpty) {
+                          return "Please enter password";
+                        } else if (onValidate.length < 6) {
+                          return "Password must be at least 6 characters";
+                        }
+                        return null;
+                      },
+                      (onSaved) {
+                        name = onSaved;
+                      },
+                      initialValue: "",
+                      borderFocusColor: Colors.teal,
+                      borderColor: Colors.teal[600]!,
+                      hintColor: Colors.teal,
+                      borderRadius: 20,
+                      borderWidth: 2,
+                      paddingLeft: 10,
+                      paddingRight: 15,
+                      paddingBottom: 5,
+                      paddingTop: 5,
                       obscureText: hidePassword,
-                      onSaved: (input) => password = input,
-                      validator: (input) => input!.length < 3
-                          ? 'Password should be more than 3 characters'
-                          : null,
-                      decoration: InputDecoration(
-                        labelText: 'Password',
-                        labelStyle: const TextStyle(
-                          color: Colors.teal,
-                          fontFamily: 'Montserrat',
-                          fontWeight: FontWeight.bold,
-                        ),
-                        focusedBorder: const UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.teal),
-                        ),
-                        suffixIcon: IconButton(
-                          onPressed: () {
-                            setState(() {
-                              hidePassword = !hidePassword;
-                            });
-                          },
-                          color: Colors.teal,
-                          icon: Icon(hidePassword
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          hidePassword
                               ? Icons.visibility_off
-                              : Icons.visibility),
+                              : Icons.visibility,
+                          color: Colors.teal,
                         ),
+                        onPressed: () {
+                          setState(() {
+                            hidePassword = !hidePassword;
+                          });
+                        },
                       ),
                     ),
                   ),
@@ -198,18 +234,127 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         shadowColor: Colors.tealAccent,
                         color: Colors.teal,
                         elevation: 7,
-                        child: GestureDetector(
-                          onTap: () {},
-                          child: const Center(
-                            child: Text(
-                              'SIGN UP',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'Montserrat',
-                              ),
-                            ),
-                          ),
+                        child: FormHelper.submitButton(
+                          btnColor: Colors.teal,
+                          borderColor: Colors.teal,
+                          "Sign Up",
+                          () {
+                            if (validateAndSave()) {
+                              setState(() {
+                                isAPIcallProcess = true;
+                              });
+
+                              // RegisterBody data = {
+                              //   name: name,
+                              //   email: email,
+                              //   password: password,
+                              // } as RegisterBody;
+
+                              RegisterRequestModel model = RegisterRequestModel(
+                                name: name,
+                                email: email,
+                                password: password,
+                                // body: data,
+                              );
+
+                              APIService.register(model).then(
+                                (response) => {
+                                  setState(() {
+                                    isAPIcallProcess = false;
+                                  }),
+                                  // print(response.data),
+                                  if (response.data != null)
+                                    {
+                                      FormHelper.showSimpleAlertDialog(
+                                        context,
+                                        Config.appName,
+                                        "OK",
+                                        "Registration Successful. Please verify your email.",
+                                        () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const OTPScreen(),
+                                            ),
+                                          );
+                                        },
+                                      )
+                                      // AlertDialog(
+                                      //   title: const Text(
+                                      //       'Registration Successful'),
+                                      //   content: SingleChildScrollView(
+                                      //     child: ListBody(
+                                      //       children: const <Widget>[
+                                      //         Text('Please login'),
+                                      //       ],
+                                      //     ),
+                                      //   ),
+                                      //   actions: <Widget>[
+                                      //     TextButton(
+                                      //       child: const Text('OK'),
+                                      //       onPressed: () {
+                                      //         Navigator
+                                      //             .pushNamedAndRemoveUntil(
+                                      //           context,
+                                      //           '/login',
+                                      //           (route) => false,
+                                      //         );
+                                      //       },
+                                      //     ),
+                                      //   ],
+                                      // )
+                                    }
+                                  else
+                                    {
+                                      FormHelper.showSimpleAlertDialog(
+                                        context,
+                                        Config.appName,
+                                        response.message,
+                                        "OK",
+                                        () {
+                                          Navigator.of(context).pop();
+                                        },
+                                      )
+                                      // AlertDialog(
+                                      //   title:
+                                      //       const Text('Registration Failed'),
+                                      //   content: SingleChildScrollView(
+                                      //     child: ListBody(
+                                      //       children: const <Widget>[
+                                      //         Text('Please try again'),
+                                      //       ],
+                                      //     ),
+                                      //   ),
+                                      //   actions: <Widget>[
+                                      //     TextButton(
+                                      //       child: const Text('OK'),
+                                      //       onPressed: () {
+                                      //         Navigator
+                                      //             .pushNamedAndRemoveUntil(
+                                      //           context,
+                                      //           '/register',
+                                      //           (route) => false,
+                                      //         );
+                                      //       },
+                                      //     ),
+                                      //   ],
+                                      // )
+                                    }
+                                },
+                              );
+                            }
+                          },
+                          // child const Center(
+                          //   child: Text(
+                          //     'SIGN UP',
+                          //     style: TextStyle(
+                          //       color: Colors.white,
+                          //       fontWeight: FontWeight.bold,
+                          //       fontFamily: 'Montserrat',
+                          //     ),
+                          //   ),
+                          // ),
                         ),
                       ),
                     ),
@@ -217,7 +362,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ],
               ),
             ),
-            const SizedBox(height: 25),
+            const SizedBox(height: 20),
             const Center(
               child: Text(
                 "OR",
@@ -229,7 +374,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
               ),
             ),
-            const SizedBox(height: 25),
+            const SizedBox(height: 20),
             Center(
               child: Container(
                 height: 40,
@@ -240,7 +385,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   color: Colors.blue,
                   elevation: 7,
                   child: GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      signUpGoogle;
+                    },
                     child: Row(
                       children: [
                         SizedBox(width: MediaQuery.of(context).size.width / 16),
@@ -268,5 +415,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
           ]),
     );
+  }
+
+  bool validateAndSave() {
+    final form = globalFormKey.currentState;
+    if (form!.validate()) {
+      form.save();
+      return true;
+    }
+    return false;
+  }
+
+  Future signUpGoogle() async {
+    await GoogleSignInApi.signIn();
   }
 }

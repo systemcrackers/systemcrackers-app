@@ -1,22 +1,28 @@
 import 'dart:convert';
 
-import 'package:http/http.dart' as http;
 import 'package:uia_app/models/login_request_model.dart';
 import 'package:uia_app/models/login_response_model.dart';
 import 'package:uia_app/models/register_request_model.dart';
 import 'package:uia_app/models/register_response_model.dart';
-import 'package:uia_app/services/shared_service.dart';
-import 'package:uia_app/utils/config.dart';
+import 'package:http/http.dart' as http;
+
+import '../utils/config.dart';
+import 'shared_service.dart';
 
 class APIService {
   static var client = http.Client();
 
-  static Future<bool> login(LoginRequestModel model) async {
+  static Future<bool> login(
+    LoginRequestModel model,
+  ) async {
     Map<String, String> requestHeaders = {
-      'Content-type': 'application/json',
+      'Content-Type': 'application/json',
     };
 
-    var url = Uri.http(Config.apiUrl, Config.loginApi);
+    var url = Uri.http(
+      Config.apiUrl,
+      Config.loginApi,
+    );
 
     var response = await client.post(
       url,
@@ -25,10 +31,11 @@ class APIService {
     );
 
     if (response.statusCode == 200) {
-      // login successful
-      // SHARED service
-
-      await SharedService.setLoginDetails(loginResponseJson(response.body));
+      await SharedService.setLoginDetails(
+        loginResponseJson(
+          response.body,
+        ),
+      );
 
       return true;
     } else {
@@ -37,12 +44,16 @@ class APIService {
   }
 
   static Future<RegisterResponseModel> register(
-      RegisterRequestModel model) async {
+    RegisterRequestModel model,
+  ) async {
     Map<String, String> requestHeaders = {
-      'Content-type': 'application/json',
+      'Content-Type': 'application/json',
     };
 
-    var url = Uri.http(Config.apiUrl, Config.registerApi);
+    var url = Uri.http(
+      Config.apiUrl,
+      Config.registerApi,
+    );
 
     var response = await client.post(
       url,
@@ -50,6 +61,30 @@ class APIService {
       body: jsonEncode(model.toJson()),
     );
 
-    return registerResponseJson(response.body);
+    return registerResponseJson(
+      response.body,
+    );
+  }
+
+  static Future<String> getUserProfile() async {
+    var loginDetails = await SharedService.loginDetails();
+
+    Map<String, String> requestHeaders = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Basic ${loginDetails!.data.token}'
+    };
+
+    var url = Uri.http(Config.apiUrl, Config.userProfileApi);
+
+    var response = await client.get(
+      url,
+      headers: requestHeaders,
+    );
+
+    if (response.statusCode == 200) {
+      return response.body;
+    } else {
+      return "";
+    }
   }
 }

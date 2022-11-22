@@ -1,24 +1,24 @@
 class RegisterRequestModel {
   RegisterRequestModel({
-    required this.email,
-    required this.username,
-    required this.password,
+    this.name,
+    this.password,
+    this.email,
   });
-  late final String email;
-  late final String username;
-  late final String password;
+  late final String? name;
+  late final String? password;
+  late final String? email;
 
   RegisterRequestModel.fromJson(Map<String, dynamic> json) {
-    email = json['email'];
-    username = json['username'];
+    name = json['name'];
     password = json['password'];
+    email = json['email'];
   }
 
   Map<String, dynamic> toJson() {
     final _data = <String, dynamic>{};
-    _data['email'] = email;
-    _data['username'] = username;
+    _data['name'] = name;
     _data['password'] = password;
+    _data['email'] = email;
     return _data;
   }
 }

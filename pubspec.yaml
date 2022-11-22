@@ -39,6 +39,7 @@ dependencies:
   api_cache_manager: ^1.0.2
   snippet_coder_utils: ^1.0.12
   font_awesome_flutter: ^10.2.1
+  google_sign_in: ^5.4.2
 
 dev_dependencies:
   flutter_test:

@@ -10,14 +10,14 @@ import 'package:uia_app/services/api_service.dart';
 import '../services/google_signin_api.dart';
 import '../utils/config.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class ChildDetails extends StatefulWidget {
+  const ChildDetails({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<ChildDetails> createState() => _ChildDetailsState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _ChildDetailsState extends State<ChildDetails> {
   bool isAPIcallProcess = false; // loader during API call
   bool hidePassword = true;
   GlobalKey<FormState> globalFormKey =
