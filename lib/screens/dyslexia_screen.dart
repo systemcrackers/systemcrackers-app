@@ -15,12 +15,13 @@ class DyslexiaScreen extends StatefulWidget {
 class _DyslexiaScreenState extends State<DyslexiaScreen> {
   Future<String?> uploadImage(filename, url) async {
     var request = http.MultipartRequest('POST', Uri.parse(url));
-    request.files.add(await http.MultipartFile.fromPath('picture', filename));
+    request.files.add(await http.MultipartFile.fromPath('files', filename));
     var res = await request.send();
     return res.reasonPhrase;
   }
 
   String state = "";
+  String pred = "";
   XFile? image;
 
   @override
@@ -56,34 +57,36 @@ class _DyslexiaScreenState extends State<DyslexiaScreen> {
             SizedBox(
               height: 20,
             ),
-            ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.teal),
-              ),
-              onPressed: () async {
-                var file =
-                    await ImagePicker().pickImage(source: ImageSource.gallery);
-                // var res =
-                // await uploadImage(file!.path, Config.dyslexiaUploadApi);
-                setState(() {
-                  image = file;
-                  // state = res!;
-                  // print(res);
-                });
-              },
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    vertical: 10.0, horizontal: 20.0),
-                child: const Text(
-                  'Upload Image',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontFamily: 'Poppins',
-                  ),
-                ),
-              ),
-            ),
+            image == null
+                ? ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.teal),
+                    ),
+                    onPressed: () async {
+                      var file = await ImagePicker()
+                          .pickImage(source: ImageSource.gallery);
+                      var res = await uploadImage(
+                          file!.path, Config.dyslexiaUploadApi);
+                      setState(() {
+                        image = file;
+                        state = res!;
+                        print(res);
+                      });
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10.0, horizontal: 20.0),
+                      child: const Text(
+                        'Upload Image',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontFamily: 'Poppins',
+                        ),
+                      ),
+                    ),
+                  )
+                : SizedBox(),
             image != null
                 ? Column(
                     children: [
@@ -109,12 +112,12 @@ class _DyslexiaScreenState extends State<DyslexiaScreen> {
                         onPressed: () async {
                           var file = await ImagePicker()
                               .pickImage(source: ImageSource.gallery);
-                          // var res =
-                          // await uploadImage(file!.path, Config.dyslexiaUploadApi);
+                          var res = await uploadImage(
+                              file!.path, Config.dyslexiaUploadApi);
                           setState(() {
                             image = file;
-                            // state = res!;
-                            // print(res);
+                            state = res!;
+                            print(res);
                           });
                         },
                         child: Padding(
