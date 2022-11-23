@@ -43,6 +43,7 @@ dependencies:
   intl: ^0.17.0
   camera: ^0.10.0+4
   country_list_pick: ^1.0.1+6
+  expandable_text: ^2.3.0
 
 dev_dependencies:
   flutter_test:
