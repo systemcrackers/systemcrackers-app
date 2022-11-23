@@ -26,7 +26,7 @@ class Data {
     required this.user,
     required this.token,
   });
-  late final User user;
+  late final User? user;
   late final String token;
 
   Data.fromJson(Map<String, dynamic> json) {
@@ -36,7 +36,7 @@ class Data {
 
   Map<String, dynamic> toJson() {
     final _data = <String, dynamic>{};
-    _data['user'] = user.toJson();
+    _data['user'] = user!.toJson();
     _data['token'] = token;
     return _data;
   }
@@ -47,19 +47,15 @@ class User {
     required this.name,
     required this.email,
     required this.dateOfSignUp,
-    required this.id,
   });
-
-  late final String name;
-  late final String email;
-  late final String dateOfSignUp;
-  late final String id;
+  late final String? name;
+  late final String? email;
+  late final String? dateOfSignUp;
 
   User.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     email = json['email'];
     dateOfSignUp = json['dateOfSignUp'];
-    id = json['id'];
   }
 
   Map<String, dynamic> toJson() {
@@ -67,7 +63,6 @@ class User {
     _data['name'] = name;
     _data['email'] = email;
     _data['dateOfSignUp'] = dateOfSignUp;
-    _data['id'] = id;
     return _data;
   }
 }

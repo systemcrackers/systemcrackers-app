@@ -29,7 +29,7 @@ class Data {
     required this.token,
     // required this.id,
   });
-  late final dynamic? user;
+  late final dynamic user;
   late final String? authEmailId;
   late final String? token;
   // late final String id;

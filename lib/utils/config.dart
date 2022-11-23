@@ -4,6 +4,6 @@ class Config {
   static const String loginApi = "/api/auth/systemcrackers/login";
   static const String registerApi = "/api/auth/systemcrackers/signup";
   static const String userProfileApi = "/users/user-profile";
-  static const String childApi = "";
+  static const String childApi = "/api/child";
   static const String dyslexiaUploadApi = "";
 }

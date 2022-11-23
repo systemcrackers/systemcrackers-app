@@ -1,3 +1,4 @@
+import 'package:country_list_pick/country_list_pick.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -164,6 +165,37 @@ class _ChildDetailsState extends State<ChildDetails> {
                       addRadioButton(1, "Female")
                     ],
                   ),
+                ),
+                const SizedBox(height: 20),
+                Padding(
+                  padding: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.width / 10,
+                    right: MediaQuery.of(context).size.width / 10,
+                  ),
+                  child: FormHelper.inputFieldWidget(
+                    context,
+                    "country",
+                    "Country",
+                    (onValidate) {
+                      if (onValidate!.isEmpty) {
+                        return "Please enter country";
+                      }
+                      return null;
+                    },
+                    (onSaved) {
+                      country = onSaved;
+                    },
+                    initialValue: "",
+                    borderFocusColor: Colors.teal,
+                    borderColor: Colors.teal[600]!,
+                    hintColor: Colors.teal,
+                    borderRadius: 20,
+                    borderWidth: 2,
+                    paddingLeft: 10,
+                    paddingRight: 15,
+                    paddingBottom: 5,
+                    paddingTop: 5,
+                  ), 
                 ),
                 const SizedBox(height: 20),
                 Padding(

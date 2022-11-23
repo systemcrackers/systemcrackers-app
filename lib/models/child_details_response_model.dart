@@ -23,32 +23,20 @@ class ChildDetailsResponseModel {
 
 class Data {
   Data({
-    required this.name,
-    required this.sex,
-    required this.dob,
-    required this.country,
+    required this.child,
     // required this.id,
   });
-  late final String name;
-  late final String sex;
-  late final String dob;
-  late final String country;
+  late final dynamic child;
   // late final String id;
 
   Data.fromJson(Map<String, dynamic> json) {
-    name = json['name'];
-    sex = json['sex'];
-    dob = json['dob'];
-    country = json['country'];
+    child = json['child'];
     // id = json['id'];
   }
 
   Map<String, dynamic> toJson() {
     final _data = <String, dynamic>{};
-    _data['name'] = name;
-    _data['sex'] = sex;
-    _data['dob'] = dob;
-    _data['country'] = country;
+    _data['child'] = child;
     // _data['id'] = id;
     return _data;
   }
