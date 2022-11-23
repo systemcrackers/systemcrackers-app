@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import './screens/login_screen.dart';
 import './screens/signup_screen.dart';
+import 'screens/child_details_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/otp_screen.dart';
 
@@ -25,6 +26,8 @@ class MyApp extends StatelessWidget {
         '/register': (context) => const SignUpScreen(),
         // '/register': (context) => const RegisterPage(),
         '/otp': (context) => const OTPScreen(),
+        '/child': (context) => const ChildDetails(),
+        
       },
     );
   }

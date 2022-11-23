@@ -216,20 +216,23 @@ class _LoginScreenState extends State<LoginScreen> {
                         shadowColor: Colors.tealAccent,
                         color: Colors.teal,
                         elevation: 7,
-                        child: GestureDetector(
-                          onTap: () {
+                        child: ElevatedButton(
+                          onPressed: () {
                             if (validateAndSave()) {
                               setState(() {
                                 isAPIcallProcess = true;
                               });
 
-                              LoginBody data = {
-                                email: email!,
-                                password: password!,
-                              } as LoginBody;
+                              // LoginBody data = {
+                              //   email: email!,
+                              //   password: password!,
+                              // } as LoginBody;
 
                               LoginRequestModel model =
-                                  LoginRequestModel(body: data);
+                                  LoginRequestModel(
+                                    email: email!,
+                                    password: password!,
+                                  );
 
                               APIService.login(model).then((response) => {
                                     setState(() {
@@ -239,7 +242,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       {
                                         Navigator.pushNamedAndRemoveUntil(
                                           context,
-                                          '/home',
+                                          '/child',
                                           (route) => false,
                                         )
                                       }

@@ -26,6 +26,17 @@ class _OTPScreenState extends State<OTPScreen> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.width / 2,
+              decoration: const BoxDecoration(
+                color: Colors.teal,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(400),
+                  bottomRight: Radius.circular(400),
+                ),
+              ),
+            ),
           const SizedBox(height: 20),
           Padding(
             padding: EdgeInsets.only(
@@ -84,7 +95,9 @@ class _OTPScreenState extends State<OTPScreen> {
           const SizedBox(height: 30),
           Center(
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/child');
+              },
               child: Text('Verify'),
               style: ElevatedButton.styleFrom(
                 primary: Colors.teal,

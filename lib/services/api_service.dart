@@ -1,9 +1,11 @@
 import 'dart:convert';
 
+import 'package:uia_app/models/child_details_request_model.dart';
 import 'package:uia_app/models/login_request_model.dart';
 import 'package:uia_app/models/login_response_model.dart';
 import 'package:uia_app/models/register_request_model.dart';
 import 'package:uia_app/models/register_response_model.dart';
+import 'package:uia_app/models/child_details_response_model.dart';
 import 'package:http/http.dart' as http;
 
 import '../utils/config.dart';
@@ -86,5 +88,28 @@ class APIService {
     } else {
       return "";
     }
+  }
+
+  static Future<ChildDetailsResponseModel> child(
+    ChildDetailsRequestModel model,
+  ) async {
+    Map<String, String> requestHeaders = {
+      'Content-Type': 'application/json',
+    };
+
+    var url = Uri.http(
+      Config.apiUrl,
+      Config.childApi,
+    );
+
+    var response = await client.post(
+      url,
+      headers: requestHeaders,
+      body: jsonEncode(model.toJson()),
+    );
+
+    return childResponseJson(
+      response.body,
+    );
   }
 }

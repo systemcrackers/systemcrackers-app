@@ -1,29 +1,12 @@
 class LoginRequestModel {
   LoginRequestModel({
-    required this.body,
-  });
-  late final LoginBody body;
-  
-  LoginRequestModel.fromJson(Map<String, dynamic> json){
-    body = LoginBody.fromJson(json['body']);
-  }
-
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['body'] = body.toJson();
-    return _data;
-  }
-}
-
-class LoginBody {
-  LoginBody({
     required this.email,
     required this.password,
   });
   late final String email;
   late final String password;
   
-  LoginBody.fromJson(Map<String, dynamic> json){
+  LoginRequestModel.fromJson(Map<String, dynamic> json){
     email = json['email'];
     password = json['password'];
   }
