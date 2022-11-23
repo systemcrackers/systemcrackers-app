@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uia_app/screens/dyslexia_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -94,10 +95,10 @@ Widget BuildCard(
               onPressed: () {
                 switch (key) {
                   case 1:
-                    // Navigator.push(context,
-                    //   MaterialPageRoute(
-                    //       builder: (context) => {})
-                    // );
+                    Navigator.push(context,
+                      MaterialPageRoute(
+                          builder: (context) => const DyslexiaScreen())
+                    );
                     break;
                   case 2:
                     // Navigator.push(context,

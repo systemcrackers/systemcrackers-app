@@ -6,17 +6,17 @@ LoginResponseModel loginResponseJson(String str) =>
 class LoginResponseModel {
   LoginResponseModel({required this.data});
   // late final String message;
-  late final Data data;
+  late final Data? data;
 
   LoginResponseModel.fromJson(Map<String, dynamic> json) {
     // message = json['message'];
-    data = Data.fromJson(json['data']);
+    data =json['data'] != null ? Data.fromJson(json['data']) : null;
   }
 
   Map<String, dynamic> toJson() {
     final _data = <String, dynamic>{};
     // _data['message'] = message;
-    _data['data'] = data.toJson();
+    _data['data'] = data!.toJson();
     return _data;
   }
 }
@@ -26,7 +26,7 @@ class Data {
     required this.user,
     required this.token,
   });
-  late final User? user;
+  late final dynamic user;
   late final String token;
 
   Data.fromJson(Map<String, dynamic> json) {
@@ -36,7 +36,7 @@ class Data {
 
   Map<String, dynamic> toJson() {
     final _data = <String, dynamic>{};
-    _data['user'] = user!.toJson();
+    _data['user'] = user;
     _data['token'] = token;
     return _data;
   }

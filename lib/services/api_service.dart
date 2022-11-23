@@ -73,7 +73,7 @@ class APIService {
 
     Map<String, String> requestHeaders = {
       'Content-Type': 'application/json',
-      'Authorization': 'Basic ${loginDetails!.data.token}'
+      'Authorization': 'Basic ${loginDetails!.data?.token}'
     };
 
     var url = Uri.http(Config.apiUrl, Config.userProfileApi);
