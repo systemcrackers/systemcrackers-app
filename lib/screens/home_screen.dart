@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -30,10 +27,10 @@ class _HomeScreenState extends State<HomeScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              BuildCard(1, "", "Take a diagnostic test",
+              BuildCard(1, "./assets/icons/test.png", "Take a diagnostic test",
                   "Diagnostics tests are blah blah", context),
-              BuildCard(2, "", "View Past reports", "Other text", context),
-              BuildCard(3, "", "Consult a specialist",
+              BuildCard(2, "./assets/icons/report.png", "View Past reports", "Other text", context),
+              BuildCard(3, "./assets/icons/specialist.jpg", "Consult a specialist",
                   "Specialists are blah blah", context),
             ],
           ),
@@ -59,7 +56,7 @@ Widget BuildCard(
             Container(
               padding: EdgeInsets.all(16),
               child: CircleAvatar(
-                backgroundImage: AssetImage(imgUrl),
+                backgroundImage: Image.asset(imgUrl).image,
                 radius: 35,
               ),
             ),

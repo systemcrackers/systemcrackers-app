@@ -134,7 +134,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       borderColor: Colors.teal[600]!,
                       hintColor: Colors.teal,
                       borderRadius: 20,
-                      
                       borderWidth: 2,
                       paddingLeft: 10,
                       paddingRight: 15,
@@ -192,7 +191,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         return null;
                       },
                       (onSaved) {
-                        name = onSaved;
+                        password = onSaved;
                       },
                       initialValue: "",
                       borderFocusColor: Colors.teal,
@@ -257,6 +256,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 // body: data,
                               );
 
+                              // print(name);
+                              // print(email);
+                              print(password);
+
                               APIService.register(model).then(
                                 (response) => {
                                   setState(() {
@@ -268,8 +271,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       FormHelper.showSimpleAlertDialog(
                                         context,
                                         Config.appName,
-                                        "OK",
                                         "Registration Successful. Please verify your email.",
+                                        "OK",
                                         () {
                                           Navigator.push(
                                             context,
@@ -280,30 +283,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                           );
                                         },
                                       )
-                                      // AlertDialog(
-                                      //   title: const Text(
-                                      //       'Registration Successful'),
-                                      //   content: SingleChildScrollView(
-                                      //     child: ListBody(
-                                      //       children: const <Widget>[
-                                      //         Text('Please login'),
-                                      //       ],
-                                      //     ),
-                                      //   ),
-                                      //   actions: <Widget>[
-                                      //     TextButton(
-                                      //       child: const Text('OK'),
-                                      //       onPressed: () {
-                                      //         Navigator
-                                      //             .pushNamedAndRemoveUntil(
-                                      //           context,
-                                      //           '/login',
-                                      //           (route) => false,
-                                      //         );
-                                      //       },
-                                      //     ),
-                                      //   ],
-                                      // )
                                     }
                                   else
                                     {
@@ -316,30 +295,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                           Navigator.of(context).pop();
                                         },
                                       )
-                                      // AlertDialog(
-                                      //   title:
-                                      //       const Text('Registration Failed'),
-                                      //   content: SingleChildScrollView(
-                                      //     child: ListBody(
-                                      //       children: const <Widget>[
-                                      //         Text('Please try again'),
-                                      //       ],
-                                      //     ),
-                                      //   ),
-                                      //   actions: <Widget>[
-                                      //     TextButton(
-                                      //       child: const Text('OK'),
-                                      //       onPressed: () {
-                                      //         Navigator
-                                      //             .pushNamedAndRemoveUntil(
-                                      //           context,
-                                      //           '/register',
-                                      //           (route) => false,
-                                      //         );
-                                      //       },
-                                      //     ),
-                                      //   ],
-                                      // )
                                     }
                                 },
                               );

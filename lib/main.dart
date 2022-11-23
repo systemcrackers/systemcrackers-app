@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uia_app/screens/dyslexia_screen.dart';
 
 import './screens/login_screen.dart';
 import './screens/signup_screen.dart';
@@ -23,11 +24,11 @@ class MyApp extends StatelessWidget {
         '/': (context) => const LoginScreen(),
         '/home': (context) => const HomeScreen(),
         'login': (context) => const LoginScreen(),
-        '/register': (context) => const HomeScreen(),
+        '/register': (context) => const SignUpScreen(),
         // '/register': (context) => const RegisterPage(),
         '/otp': (context) => const OTPScreen(),
         '/child': (context) => const ChildDetails(),
-        
+        '/dyslexia':(context) => const DyslexiaScreen(),
       },
     );
   }

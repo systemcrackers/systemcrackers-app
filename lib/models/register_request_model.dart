@@ -1,8 +1,8 @@
 class RegisterRequestModel {
   RegisterRequestModel({
-    this.name,
-    this.password,
-    this.email,
+    required this.name,
+    required this.password,
+    required this.email,
   });
   late final String? name;
   late final String? password;
