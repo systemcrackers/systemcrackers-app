@@ -116,7 +116,8 @@ class QuestionController extends GetxController
       _animationController.forward().whenComplete(nextQuestion);
     } else {
       // Get package provides us simple way to navigate another page
-      Get.to(const EmailReport());
+      // Get.to(EmailReport());
+      Get.toNamed('/email_report');
     }
   }
 

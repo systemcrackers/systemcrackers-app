@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:uia_app/screens/dyslexia_screen.dart';
 import 'package:uia_app/services/shared_service.dart';
 
@@ -6,6 +7,7 @@ import './screens/login_screen.dart';
 import './screens/signup_screen.dart';
 import 'screens/autism_quiz_screen.dart';
 import 'screens/child_details_screen.dart';
+import 'screens/email_report.dart';
 import 'screens/home_screen.dart';
 import 'screens/know_more_screen.dart';
 import 'screens/otp_screen.dart';
@@ -29,7 +31,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       theme: ThemeData(
         primarySwatch: Colors.teal,
         visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -46,7 +48,7 @@ class MyApp extends StatelessWidget {
         '/dyslexia': (context) => const DyslexiaScreen(),
         '/autism': (context) => const AutismQuizScreen(),
         '/know_more': (context) => KnowMoreScreen(),
-
+        '/email_report': (context) => const EmailReport(),
       },
     );
   }

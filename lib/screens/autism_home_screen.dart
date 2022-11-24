@@ -66,7 +66,7 @@ class _AutismHomeScreenState extends State<AutismHomeScreen> {
                           borderRadius: BorderRadius.all(Radius.circular(12)),
                         ),
                         child: Text(
-                          "Start Quiz",
+                          "Start Test",
                           style: Theme.of(context)
                               .textTheme
                               .button
