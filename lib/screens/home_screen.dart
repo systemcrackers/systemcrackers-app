@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uia_app/screens/dyslexia_screen.dart';
 import 'package:uia_app/screens/know_more_screen.dart';
-import 'package:uia_app/screens/text_to_speech.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -156,7 +155,7 @@ Widget BuildCard(
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const TextToSpeech()));
+                            builder: (context) => const DyslexiaScreen()));
                     break;
                   case 2:
                     // Navigator.push(context,

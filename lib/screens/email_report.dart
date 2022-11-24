@@ -66,7 +66,7 @@ class _EmailReportState extends State<EmailReport> {
             SizedBox(height: 25),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/text_to_speech');
+                Navigator.pushNamed(context, '/learning_home_screen');
               },
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 12),
