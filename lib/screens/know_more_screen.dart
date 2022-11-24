@@ -79,6 +79,7 @@ class KnowMoreScreen extends StatelessWidget {
               final feature = featuresList[index];
 
               return SingleChildScrollView(
+                scrollDirection: Axis.vertical,
                 child: Container(
                   margin: EdgeInsets.fromLTRB(20, 15, 20, 10),
                   decoration: BoxDecoration(

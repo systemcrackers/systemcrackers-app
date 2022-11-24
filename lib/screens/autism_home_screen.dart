@@ -70,7 +70,7 @@ class _AutismHomeScreenState extends State<AutismHomeScreen> {
                           style: Theme.of(context)
                               .textTheme
                               .button
-                              ?.copyWith(color: Colors.black),
+                              ?.copyWith(color: Colors.white),
                         ),
                       ),
                     ),

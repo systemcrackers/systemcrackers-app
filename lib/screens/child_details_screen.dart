@@ -55,6 +55,7 @@ class _ChildDetailsState extends State<ChildDetails> {
 
   Widget _loginUI(BuildContext context) {
     return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,

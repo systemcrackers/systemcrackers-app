@@ -10,7 +10,9 @@ import 'screens/child_details_screen.dart';
 import 'screens/email_report.dart';
 import 'screens/home_screen.dart';
 import 'screens/know_more_screen.dart';
+import 'screens/learning_home_screen.dart';
 import 'screens/otp_screen.dart';
+import 'screens/text_to_speech.dart';
 
 Widget _defaultHome = const LoginScreen();
 
@@ -49,6 +51,9 @@ class MyApp extends StatelessWidget {
         '/autism': (context) => const AutismQuizScreen(),
         '/know_more': (context) => KnowMoreScreen(),
         '/email_report': (context) => const EmailReport(),
+        // '/autism_home': (context) => const AutismHomeScreen(),
+        '/learning_home':(context) => const LearningHomeScreen(),
+        '/text_to_speech': (context) => const TextToSpeech(),
       },
     );
   }
