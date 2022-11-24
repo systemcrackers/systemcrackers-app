@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:snippet_coder_utils/ProgressHUD.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
+import 'package:uia_app/models/dyslexia_request_model.dart';
 import 'package:uia_app/utils/config.dart';
 import '../models/dyslexia_response_model.dart';
 
@@ -80,7 +81,8 @@ class _DyslexiaScreenState extends State<DyslexiaScreen> {
                         // var tempPred = res.toJson();
                         // pred = tempPred['pred'];
                         print("Res: $res");
-                        DyslexiaModel model = DyslexiaModel.fromJson(json.decode(res.body));
+                        DyslexiaModel model =
+                            DyslexiaModel.fromJson(json.decode(res.body));
                         pred = model.pred;
                       });
                     },
@@ -130,7 +132,8 @@ class _DyslexiaScreenState extends State<DyslexiaScreen> {
                             image = file;
                             state = res.reasonPhrase!;
                             // pred = res.pred!;
-                            DyslexiaModel model = DyslexiaModel.fromJson(json.decode(res.body));
+                            DyslexiaModel model =
+                                DyslexiaModel.fromJson(json.decode(res.body));
                             pred = model.pred;
                             print("Res: $res");
                           });
@@ -163,10 +166,27 @@ class _DyslexiaScreenState extends State<DyslexiaScreen> {
                           setState(() {
                             state = res.reasonPhrase!;
                             // pred = res.pred!;
-                            DyslexiaModel model = DyslexiaModel.fromJson(json.decode(res.body));
+                            DyslexiaModel model =
+                                DyslexiaModel.fromJson(json.decode(res.body));
                             pred = model.pred;
                             print("Final Res: $res");
                           });
+                          DyslexiaRequestModel model =
+                              DyslexiaRequestModel(img: image!, pred: pred);
+                          var url = Uri.parse(Config.draftReportApi);
+                          var newUrl = 'http://' + Config.apiUrl + url.path;
+                          var streamedResult = await uploadImage(
+                            image!.path, newUrl);
+                          var result = await http.Response.fromStream(streamedResult);
+                          // if (result.statusCode == 200) {
+                          //   Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //       builder: (context) =>
+                          //           AutismHomeScreen(pred: pred),
+                          //     ),
+                          //   );
+                          // }
                           Navigator.push(
                             context,
                             MaterialPageRoute(
