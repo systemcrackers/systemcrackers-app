@@ -11,6 +11,7 @@ import 'screens/email_report.dart';
 import 'screens/home_screen.dart';
 import 'screens/know_more_screen.dart';
 import 'screens/otp_screen.dart';
+import 'screens/text_to_speech.dart';
 
 Widget _defaultHome = const LoginScreen();
 
@@ -49,6 +50,7 @@ class MyApp extends StatelessWidget {
         '/autism': (context) => const AutismQuizScreen(),
         '/know_more': (context) => KnowMoreScreen(),
         '/email_report': (context) => const EmailReport(),
+        '/text_to_speech': (context) => const TextToSpeech(),
       },
     );
   }

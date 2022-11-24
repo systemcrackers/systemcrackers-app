@@ -49,7 +49,7 @@ const List sample_data = [
     "question": "If you or someone else in the family is visibly upset, does your child show signs of wanting to comfort them? (e.g. stroking hair, hugging them)",
     "options": ['Never', 'Rarely', 'Usually', 'Always'],
     "answer_index": 2,
-  }
+  },
   {
     "id": 8,
     "question": "Would you describe your child's first word as:",

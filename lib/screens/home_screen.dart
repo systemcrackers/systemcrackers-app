@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uia_app/screens/dyslexia_screen.dart';
 import 'package:uia_app/screens/know_more_screen.dart';
+import '../utils/hamburger_menu.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -35,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
           SizedBox(width: MediaQuery.of(context).size.width * 0.05),
         ],
       ),
-      drawer: Drawer(),
+      drawer: NavBar(),
       body: Container(
         color: Colors.teal[100],
         child: SingleChildScrollView(

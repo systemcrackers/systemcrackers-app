@@ -2,7 +2,7 @@
     package="com.system_crackers.uia_app">
     <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="uia_app"
+        android:label="Udaan"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

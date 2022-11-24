@@ -6,6 +6,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:uia_app/models/login_response_model.dart';
 
+import '../screens/login_screen.dart';
+
 class SharedService {
   static Future<bool> isLoggedIn() async {
     var isKeyExist =
@@ -38,11 +40,12 @@ class SharedService {
   static Future<void> logout(BuildContext context) async {
     await APICacheManager().deleteCache("login_details");
     // ignore: use_build_context_synchronously
-    Navigator.pushNamedAndRemoveUntil(
-      context,
-      // MaterialPageRoute(builder: (context) => const LoginScreen()),
-      '/login',
-      (route) => false,
-    );
+    // Navigator.pushNamedAndRemoveUntil(
+    //   context,
+    //   // MaterialPageRoute(builder: (context) => const LoginScreen()),
+    //   '/login',
+    //   (route) => false,
+    // );
+    Navigator.push(context, new MaterialPageRoute(builder: (context) => new LoginScreen()));
   }
 }

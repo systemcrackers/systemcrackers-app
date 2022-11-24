@@ -46,10 +46,20 @@ dependencies:
   expandable_text: ^2.3.0
   dio: ^4.0.6
   get: ^4.6.5
+  flutter_tts: ^3.6.2
+  provider: ^6.0.4
+  image_picker: ^0.8.6
+  flutter_launcher_icons: ^0.11.0
+  agora_rtc_engine: ^6.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: 'assets/logos/logo.png'
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

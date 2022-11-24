@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 class AutismHomeScreen extends StatefulWidget {
   const AutismHomeScreen({required this.pred, super.key});
-
   final String pred;
 
   @override
