@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class LearningHomeScreen extends StatelessWidget {
   const LearningHomeScreen({super.key});
@@ -21,7 +19,9 @@ class LearningHomeScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            _buildCard(context, "", "Text-To-Speech")
+            _buildCard(context, "../", "Learning and Evaluation", '/text_to_speech'),
+            _buildCard(context, "", "Tutorials", '/tutorials'),
+
           ],
         ),
       ),
@@ -29,42 +29,45 @@ class LearningHomeScreen extends StatelessWidget {
   }
 }
 
-Widget _buildCard(BuildContext context, String imgUrl, String title) {
+Widget _buildCard(BuildContext context, String imgUrl, String title, String route) {
   return Padding(
     padding: const EdgeInsets.all(8.0),
-    child: Card(
-      elevation: 10,
-      child: Container(
-        height: 200,
-        width: 150,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          image: DecorationImage(
-            image: AssetImage(imgUrl),
-            fit: BoxFit.cover,
-          ),
-        ),
+    child: GestureDetector(
+      onTap: () => Navigator.pushNamed(context, route),
+      child: Card(
+        elevation: 10,
         child: Container(
+          height: 200,
+          width: 150,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            gradient: LinearGradient(
-              begin: Alignment.bottomRight,
-              colors: [
-                Colors.teal.withOpacity(.8),
-                Colors.teal.withOpacity(.2),
-              ],
+            image: DecorationImage(
+              image: AssetImage(imgUrl),
+              fit: BoxFit.cover,
             ),
           ),
-          child: Align(
-            alignment: Alignment.bottomLeft,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                title,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              gradient: LinearGradient(
+                begin: Alignment.bottomRight,
+                colors: [
+                  Colors.teal.withOpacity(.8),
+                  Colors.teal.withOpacity(.2),
+                ],
+              ),
+            ),
+            child: Align(
+              alignment: Alignment.bottomLeft,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  title,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),

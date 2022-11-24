@@ -280,56 +280,56 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             const SizedBox(height: 25),
-            const Center(
-              child: Text(
-                "OR",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Montserrat',
-                ),
-              ),
-            ),
-            const SizedBox(height: 25),
-            Center(
-              child: Container(
-                height: 40,
-                width: MediaQuery.of(context).size.width / 1.75,
-                child: Material(
-                  borderRadius: BorderRadius.circular(20),
-                  shadowColor: Colors.blueAccent,
-                  color: Colors.blue,
-                  elevation: 7,
-                  child: GestureDetector(
-                    onTap: () {
-                      // signInGoogle;
-                    },
-                    child: Row(
-                      children: [
-                        SizedBox(width: MediaQuery.of(context).size.width / 16),
-                        const Icon(
-                          FontAwesomeIcons.google,
-                          color: Colors.white,
-                          size: 16,
-                        ),
-                        const SizedBox(width: 5),
-                        const Center(
-                          child: Text(
-                            'Sign In with Google',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Montserrat',
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
+            // const Center(
+            //   child: Text(
+            //     "OR",
+            //     style: TextStyle(
+            //       color: Colors.white,
+            //       fontSize: 16,
+            //       fontWeight: FontWeight.bold,
+            //       fontFamily: 'Montserrat',
+            //     ),
+            //   ),
+            // ),
+            // const SizedBox(height: 25),
+            // Center(
+            //   child: Container(
+            //     height: 40,
+            //     width: MediaQuery.of(context).size.width / 1.75,
+            //     child: Material(
+            //       borderRadius: BorderRadius.circular(20),
+            //       shadowColor: Colors.blueAccent,
+            //       color: Colors.blue,
+            //       elevation: 7,
+            //       child: GestureDetector(
+            //         onTap: () {
+            //           // signInGoogle;
+            //         },
+            //         child: Row(
+            //           children: [
+            //             SizedBox(width: MediaQuery.of(context).size.width / 16),
+            //             const Icon(
+            //               FontAwesomeIcons.google,
+            //               color: Colors.white,
+            //               size: 16,
+            //             ),
+            //             const SizedBox(width: 5),
+            //             const Center(
+            //               child: Text(
+            //                 'Sign In with Google',
+            //                 style: TextStyle(
+            //                   color: Colors.white,
+            //                   fontWeight: FontWeight.bold,
+            //                   fontFamily: 'Montserrat',
+            //                 ),
+            //               ),
+            //             ),
+            //           ],
+            //         ),
+            //       ),
+            //     ),
+            //   ),
+            // ),
             Center(
               child: Padding(
                 padding: const EdgeInsets.only(
