@@ -45,6 +45,7 @@ dependencies:
   country_list_pick: ^1.0.1+6
   expandable_text: ^2.3.0
   dio: ^4.0.6
+  get: ^4.6.5
 
 dev_dependencies:
   flutter_test:

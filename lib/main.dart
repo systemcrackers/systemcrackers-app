@@ -4,10 +4,10 @@ import 'package:uia_app/services/shared_service.dart';
 
 import './screens/login_screen.dart';
 import './screens/signup_screen.dart';
+import 'screens/autism_quiz_screen.dart';
 import 'screens/child_details_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/know_more_screen.dart';
-import 'screens/learning_disability_screen.dart';
 import 'screens/otp_screen.dart';
 
 Widget _defaultHome = const LoginScreen();
@@ -44,7 +44,10 @@ class MyApp extends StatelessWidget {
         '/otp': (context) => const OTPScreen(),
         '/child': (context) => const ChildDetails(),
         '/dyslexia': (context) => const DyslexiaScreen(),
-        '/know_more':(context) => KnowMoreScreen(),      },
+        '/autism': (context) => const AutismQuizScreen(),
+        '/know_more': (context) => KnowMoreScreen(),
+
+      },
     );
   }
 }

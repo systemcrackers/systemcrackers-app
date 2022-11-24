@@ -1,9 +1,13 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
 import 'package:uia_app/utils/config.dart';
+import '../models/dyslexia_response_model.dart';
+
+import 'autism_home_screen.dart';
 
 class DyslexiaScreen extends StatefulWidget {
   const DyslexiaScreen({super.key});
@@ -13,11 +17,11 @@ class DyslexiaScreen extends StatefulWidget {
 }
 
 class _DyslexiaScreenState extends State<DyslexiaScreen> {
-  Future<String?> uploadImage(filename, url) async {
+  Future<dynamic> uploadImage(filename, url) async {
     var request = http.MultipartRequest('POST', Uri.parse(url));
     request.files.add(await http.MultipartFile.fromPath('files', filename));
     var res = await request.send();
-    return res.reasonPhrase;
+    return res;
   }
 
   String state = "";
@@ -65,12 +69,18 @@ class _DyslexiaScreenState extends State<DyslexiaScreen> {
                     onPressed: () async {
                       var file = await ImagePicker()
                           .pickImage(source: ImageSource.gallery);
-                      var res = await uploadImage(
+                      var streamedRes = await uploadImage(
                           file!.path, Config.dyslexiaUploadApi);
+                      var res = await http.Response.fromStream(streamedRes);
                       setState(() {
                         image = file;
-                        state = res!;
-                        print(res);
+                        state = res.reasonPhrase!;
+                        // pred = res.pred!;
+                        // var tempPred = res.toJson();
+                        // pred = tempPred['pred'];
+                        print("Res: $res");
+                        DyslexiaModel model = DyslexiaModel.fromJson(json.decode(res.body));
+                        pred = model.pred;
                       });
                     },
                     child: Padding(
@@ -112,18 +122,22 @@ class _DyslexiaScreenState extends State<DyslexiaScreen> {
                         onPressed: () async {
                           var file = await ImagePicker()
                               .pickImage(source: ImageSource.gallery);
-                          var res = await uploadImage(
+                          var streamedRes = await uploadImage(
                               file!.path, Config.dyslexiaUploadApi);
+                          var res = await http.Response.fromStream(streamedRes);
                           setState(() {
                             image = file;
-                            state = res!;
-                            print(res);
+                            state = res.reasonPhrase!;
+                            // pred = res.pred!;
+                            DyslexiaModel model = DyslexiaModel.fromJson(json.decode(res.body));
+                            pred = model.pred;
+                            print("Res: $res");
                           });
                         },
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
+                        child: const Padding(
+                          padding: EdgeInsets.symmetric(
                               vertical: 10.0, horizontal: 20.0),
-                          child: const Text(
+                          child: Text(
                             'Choose Another Image',
                             style: TextStyle(
                               color: Colors.white,
@@ -142,18 +156,29 @@ class _DyslexiaScreenState extends State<DyslexiaScreen> {
                               MaterialStateProperty.all(Colors.teal),
                         ),
                         onPressed: () async {
-                          var res = await uploadImage(
+                          var streamedRes = await uploadImage(
                               image!.path, Config.dyslexiaUploadApi);
+                          var res = await http.Response.fromStream(streamedRes);
                           setState(() {
-                            state = res!;
-                            print(res);
+                            state = res.reasonPhrase!;
+                            // pred = res.pred!;
+                            DyslexiaModel model = DyslexiaModel.fromJson(json.decode(res.body));
+                            pred = model.pred;
+                            print("Final Res: $res");
                           });
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  AutismHomeScreen(pred: pred),
+                            ),
+                          );
                         },
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
+                        child: const Padding(
+                          padding: EdgeInsets.symmetric(
                               vertical: 10.0, horizontal: 20.0),
-                          child: const Text(
-                            'Submit',
+                          child: Text(
+                            'Next >',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 16,
