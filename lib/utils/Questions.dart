@@ -10,58 +10,58 @@ const List sample_data = [
   {
     "id": 1,
     "question":
-        "Little interest or pleasure in doing things",
+        "Does your child look at you when you call his/her name?",
     "options": ['Not at all', 'Several Days', 'More than half the days', 'Nearly everyday'],
     "answer_index": 1,
   },
   {
     "id": 2,
-    "question": "Feeling down, depressed or hopeless",
+    "question": "How easy is it for you to get eye contact with your child?",
     "options":['Not at all', 'Several Days', 'More than half the days', 'Nearly everyday'],
     "answer_index": 2,
   },
   {
     "id": 3,
-    "question": "Trouble falling asleep, staying asleep, or sleeping too much",
+    "question": "Does your child point to indicate that s/he wants something? (e.g. a toy is out of reach)",
     "options": ['Not at all', 'Several Days', 'More than half the days', 'Nearly everyday'],
     "answer_index": 2,
   },
   {
     "id": 4,
-    "question": "Feeling tired or having little energy",
+    "question": "Does your child point to share interest with you? (e.g. pointing at an interesting sight)",
     "options": ['Not at all', 'Several Days', 'More than half the days', 'Nearly everyday'],
     "answer_index": 2,
   },
   {
     "id": 5,
-    "question": "Poor appetite or overeating",
+    "question": "Does your child pretend? (e.g. care for dolls, talk on a toy phone)",
     "options": ['Not at all', 'Several Days', 'More than half the days', 'Nearly everyday'],
     "answer_index": 2,
   },
   {
     "id": 6,
-    "question": "Feeling bad about yourself - or that you’re a failure or have let yourself or your family down",
+    "question": "Does your child follow where you're looking?",
     "options": ['Not at all', 'Several Days', 'More than half the days', 'Nearly everyday'],
     "answer_index": 2,
   },
   {
     "id": 7,
-    "question": "Trouble concentrating on things, such as reading the newspaper or watching television",
+    "question": "If you or someone else in the family is visibly upset, does your child show signs of wanting to comfort them? (e.g. stroking hair, hugging them)",
     "options": ['Not at all', 'Several Days', 'More than half the days', 'Nearly everyday'],
     "answer_index": 2,
-  },
-  {
-    "id": 8,
-    "question": "Moving/speaking so slowly or being so restless that other people noticed",
-    "options": ['Not at all', 'Several Days', 'More than half the days', 'Nearly everyday'],
-    "answer_index": 2,
-  },
-  {
-    "id": 9,
-    "question": "Thoughts that you would be better off dead or of hurting yourself in some way",
-    "options": ['Not at all', 'Several Days', 'More than half the days', 'Nearly everyday'],
-    "answer_index": 2,
-  },
+  // },
+  // {
+  //   "id": 8,
+  //   "question": "Would you describe your childs ",
+  //   "options": ['Not at all', 'Several Days', 'More than half the days', 'Nearly everyday'],
+  //   "answer_index": 2,
+  // },
+  // {
+  //   "id": 9,
+  //   "question": "Thoughts that you would be better off dead or of hurting yourself in some way",
+  //   "options": ['Not at all', 'Several Days', 'More than half the days', 'Nearly everyday'],
+  //   "answer_index": 2,
+  // },
 ];
 
 const List sample_data2 = [
