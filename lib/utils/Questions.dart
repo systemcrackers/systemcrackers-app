@@ -11,13 +11,13 @@ const List sample_data = [
     "id": 1,
     "question":
         "Does your child look at you when you call his/her name?",
-    "options": ['Not at all', 'Several Days', 'More than half the days', 'Nearly everyday'],
+    "options": ['Not at all', 'Rarely', 'Usually', 'All the time'],
     "answer_index": 1,
   },
   {
     "id": 2,
     "question": "How easy is it for you to get eye contact with your child?",
-    "options":['Not at all', 'Several Days', 'More than half the days', 'Nearly everyday'],
+    "options":['Very easy', 'Easy', 'Difficult', 'Very difficult'],
     "answer_index": 2,
   },
   {
@@ -29,25 +29,25 @@ const List sample_data = [
   {
     "id": 4,
     "question": "Does your child point to share interest with you? (e.g. pointing at an interesting sight)",
-    "options": ['Not at all', 'Several Days', 'More than half the days', 'Nearly everyday'],
+    "options": ['Not at all', 'Rarely', 'Few times a week', 'Many times a day'],
     "answer_index": 2,
   },
   {
     "id": 5,
     "question": "Does your child pretend? (e.g. care for dolls, talk on a toy phone)",
-    "options": ['Not at all', 'Several Days', 'More than half the days', 'Nearly everyday'],
+    "options": ['Not at all', 'Rarely', 'Few times a week', 'Many times a day'],
     "answer_index": 2,
   },
   {
     "id": 6,
     "question": "Does your child follow where you're looking?",
-    "options": ['Not at all', 'Several Days', 'More than half the days', 'Nearly everyday'],
+    "options": ['Never', 'Rarely', 'Usually', 'Always'],
     "answer_index": 2,
   },
   {
     "id": 7,
     "question": "If you or someone else in the family is visibly upset, does your child show signs of wanting to comfort them? (e.g. stroking hair, hugging them)",
-    "options": ['Not at all', 'Several Days', 'More than half the days', 'Nearly everyday'],
+    "options": ['Never', 'Rarely', 'Usually', 'Always'],
     "answer_index": 2,
   }
   {
@@ -64,7 +64,7 @@ const List sample_data = [
   },
   {
     "id": 10,
-    "question": "Does your child stare at nothing with no apperent purpose",
+    "question": "Does your child stare at nothing with no apperent purpose?",
     "options": ['Not at all', 'Several Days', 'More than half the days', 'Nearly everyday'],
     "answer_index": 2,
   }
